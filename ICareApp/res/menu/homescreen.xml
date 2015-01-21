@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:icon="@drawable/add"
+    app:showAsAction="ifRoom|withText" >
+
+    <item
+      android:id="@+id/Add_Chart"
+      android:orderInCategory="100"
+      android:title="@string/chart"
+      app:showAsAction="ifRoom|withText" />
+   <item
+      android:id="@+id/All_Diet"
+      android:orderInCategory="100"
+      android:title="@string/vall"
+      app:showAsAction="ifRoom|withText" />
+   <item
+      android:id="@+id/Preview_Profile"
+      android:orderInCategory="100"
+      android:title="@string/vprofile"
+      app:showAsAction="ifRoom|withText" />
+</menu>

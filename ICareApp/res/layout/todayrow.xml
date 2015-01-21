@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="6dip" >
+    
+    <TextView
+        android:id="@+id/meal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/mealName"
+        android:textColor="#000000"
+        android:textSize="20sp" >
+        
+    </TextView>
+
+    <TextView
+        android:id="@+id/time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/meal"
+        android:layout_alignBottom="@+id/meal"
+        android:layout_alignParentRight="true"
+        android:text="@string/time"
+        android:textColor="#ee0000"
+        android:textSize="20sp" />
+     <TextView
+        android:id="@+id/dbID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/time"
+        android:textSize="12sp"
+        android:visibility="gone" />
+
+     <TextView
+         android:id="@+id/menu"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_alignLeft="@+id/meal"
+         android:layout_below="@+id/meal"
+         android:layout_marginTop="20dp"
+         android:text="@string/menu"
+         android:textColor="#ee0000"
+         android:textSize="20sp" />
+    
+    </RelativeLayout> 

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="6dip" >
+    
+    <TextView
+        android:id="@+id/dateFF"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/date"
+        android:textColor="#000000"
+        android:textSize="20sp" >
+        
+    </TextView>
+
+    <TextView
+        android:id="@+id/mealNameF"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/dateFF"
+        android:layout_alignBottom="@+id/dateFF"
+        android:layout_alignParentRight="true"
+        android:text="@string/mealName"
+        android:textColor="#ee0000"
+        android:textSize="20sp" />
+     <TextView
+        android:id="@+id/dbID3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/dateFF"
+        android:textSize="20sp"
+        android:visibility="gone" />
+    
+    </RelativeLayout> 
