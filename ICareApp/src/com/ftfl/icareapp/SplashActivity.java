@@ -1,5 +1,7 @@
 package com.ftfl.icareapp;
 
+import com.ftfl.icareapp.util.FTFLConstants;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -9,19 +11,17 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 public class SplashActivity extends Activity {
-	
+
 	SharedPreferences sPrefs;
-	
-	public static final String MyPREFERENCES = "MyPrefs";
-	public static final String PROFILE = "Profile";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_splash);
-		
-		sPrefs = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
-		
+
+		sPrefs = getSharedPreferences(FTFLConstants.MyPREFERENCES,
+				Context.MODE_PRIVATE);
+
 		Thread background = new Thread() {
 			public void run() {
 
@@ -29,14 +29,11 @@ public class SplashActivity extends Activity {
 					// Thread will sleep for 3 seconds
 					sleep(3 * 1000);
 
-					
-					if(!sPrefs.contains(PROFILE))
-					{
+					if (!sPrefs.contains(FTFLConstants.KEY_PROFILE)) {
 						Intent i = new Intent(SplashActivity.this,
 								ProfileActivity.class);
 						startActivity(i);
-					}
-					else{
+					} else {
 						Intent i = new Intent(SplashActivity.this,
 								HomeScreenActivity.class);
 						startActivity(i);

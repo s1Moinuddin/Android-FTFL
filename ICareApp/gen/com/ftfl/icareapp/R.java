@@ -1902,6 +1902,7 @@ containing a value of this type.
         public static final int mname=0x7f0a0018;
         public static final int name=0x7f0a0016;
         public static final int no=0x7f0a0035;
+        public static final int option=0x7f0a003a;
         public static final int pickDate=0x7f0a0031;
         public static final int pickMonth=0x7f0a0032;
         public static final int profile=0x7f0a0013;
@@ -1918,6 +1919,7 @@ containing a value of this type.
         public static final int upcomingDiet=0x7f0a002a;
         public static final int update=0x7f0a001f;
         public static final int vall=0x7f0a0039;
+        public static final int view_diet=0x7f0a003b;
         public static final int vprofile=0x7f0a0038;
         public static final int weight=0x7f0a001a;
         public static final int yes=0x7f0a0034;

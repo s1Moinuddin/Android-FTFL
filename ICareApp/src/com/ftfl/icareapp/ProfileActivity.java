@@ -3,11 +3,10 @@ package com.ftfl.icareapp;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 
-import com.ftfl.icareapp.util.Profile;
+import com.ftfl.icareapp.util.FTFLConstants;
+import com.ftfl.icareapp.util.MyProfile;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-
-
 
 import android.app.Activity;
 import android.content.Context;
@@ -18,31 +17,29 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class ProfileActivity extends Activity {
-	
-	ArrayList<Profile> myProfile;
-	ArrayList<Profile> gSonList;
-	EditText etName, etEmail, etDob, etWeight, etHeight, etEye,
-			etDiseas;
-	//Profile nProfile;
-	Profile shuvo;
-	SharedPreferences sPrefs;
-	Gson gSon;
-	
-	public static final String MyPREFERENCES = "MyPrefs";
-	public static final String PROFILE = "Profile";
-	
+
+	ArrayList<MyProfile> myProfile = null;
+	ArrayList<MyProfile> gSonList = null;
+	EditText etName = null, etEmail = null, etDob = null, etWeight = null,
+			etHeight = null, etEye = null, etDiseas = null;
+	MyProfile shuvo = null;
+	SharedPreferences sPrefs = null;
+	Gson gSon = null;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_profile);
-		
-		myProfile = new ArrayList<Profile>();
-		// gSonList = new ArrayList<Profile>();
 
-		sPrefs = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+		myProfile = new ArrayList<MyProfile>();
+		gSonList = new ArrayList<MyProfile>();
+
+		sPrefs = getSharedPreferences(FTFLConstants.MyPREFERENCES,
+				Context.MODE_PRIVATE);
 		gSon = new Gson();
 
 		etName = (EditText) findViewById(R.id.nameET);
@@ -52,12 +49,12 @@ public class ProfileActivity extends Activity {
 		etHeight = (EditText) findViewById(R.id.heightET);
 		etEye = (EditText) findViewById(R.id.ecolorET);
 		etDiseas = (EditText) findViewById(R.id.majordiseaseET);
-		
-		if (sPrefs.contains(PROFILE)) {
 
-			String listRead = sPrefs.getString(PROFILE, "");
+		if (sPrefs.contains(FTFLConstants.KEY_PROFILE)) {
 
-			Type type = new TypeToken<ArrayList<Profile>>() {
+			String listRead = sPrefs.getString(FTFLConstants.KEY_PROFILE, "");
+
+			Type type = new TypeToken<ArrayList<MyProfile>>() {
 			}.getType(); // to get the type of the encryption, to decrypt it.
 
 			gSonList = gSon.fromJson(listRead, type);
@@ -69,15 +66,17 @@ public class ProfileActivity extends Activity {
 			etHeight.setText(gSonList.get(0).getHeight());
 			etEye.setText(gSonList.get(0).getEyeColor());
 			etDiseas.setText(gSonList.get(0).getMajorDisase());
-			
+
 			Button saveBtn = (Button) findViewById(R.id.save);
-			saveBtn.setText("Update");
+			saveBtn.setText(FTFLConstants.UPDATE);
+			TextView editTittle = (TextView) findViewById(R.id.tittle);
+			editTittle.setText(FTFLConstants.EDIT_PROFILE);
 
 		}
 
 	}
-	
-	public void save(View aView) {
+
+	public void saveProfile(View aView) {
 
 		String name = etName.getText().toString();
 		String email = etEmail.getText().toString();
@@ -87,15 +86,15 @@ public class ProfileActivity extends Activity {
 		String eye = etEye.getText().toString();
 		String disease = etDiseas.getText().toString();
 
-		Toast.makeText(this, "Data Saved", Toast.LENGTH_SHORT).show();
+		Toast.makeText(this, FTFLConstants.SAVE, Toast.LENGTH_SHORT).show();
 
-		myProfile.add(shuvo = new Profile(name, dob, height, weight,
-				eye,disease, email));
+		myProfile.add(shuvo = new MyProfile(name, dob, height, weight, eye,
+				disease, email));
 
 		// Store arraylist in sharedpreference
 		String nProfile = gSon.toJson(myProfile);
 		Editor sEdit = sPrefs.edit();
-		sEdit.putString("Profile", nProfile);
+		sEdit.putString(FTFLConstants.KEY_PROFILE, nProfile);
 		sEdit.commit();
 
 		Intent i = new Intent(this, DietChartActivity.class);
@@ -103,6 +102,5 @@ public class ProfileActivity extends Activity {
 		finish();
 
 	}
-
 
 }

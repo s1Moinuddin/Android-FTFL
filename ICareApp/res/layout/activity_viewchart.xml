@@ -4,10 +4,8 @@
     android:layout_height="match_parent"
     android:background="@drawable/bk"
     android:orientation="vertical"
-    android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin" >
+    android:paddingRight="@dimen/activity_horizontal_margin" >
     
     <LinearLayout
         android:layout_width="match_parent"
@@ -21,7 +19,7 @@
         android:layout_height="wrap_content"
         android:background="#40c4ff"
         android:gravity="center"
-        android:text="@string/tittleAddDiet"
+        android:text="@string/view_diet"
         android:textColor="#e1f5fe"
         android:textSize="35sp"
         android:textStyle="italic" />

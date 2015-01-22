@@ -2,10 +2,6 @@ package com.ftfl.icareapp.adapter;
 
 import java.util.ArrayList;
 
-import com.ftfl.icareapp.R;
-import com.ftfl.icareapp.util.DietChart;
-
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,43 +9,62 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import com.ftfl.icareapp.R;
+import com.ftfl.icareapp.util.DietChart;
+
 public class DietAdapter extends ArrayAdapter<DietChart> {
 	
-	private final Activity context;
-	ArrayList<DietChart> dietProfile;
+	Activity context;
+	ArrayList<DietChart> dietChart;
+	DietChart todayChart;
 
-	public DietAdapter(Activity context, ArrayList<DietChart> dietProfile) {
+	public DietAdapter(Activity context, ArrayList<DietChart> dietChart) {
 
-		super(context, R.layout.todayrow, dietProfile);
+		super(context, R.layout.todayrow, dietChart);
 
 		this.context = context;
-		this.dietProfile = dietProfile;
+		this.dietChart = dietChart;
 	}
 	
-	@SuppressLint({ "ViewHolder", "InflateParams" })
+	/********* Create a holder Class to contain inflated xml file elements *********/
+	public static class ViewHolder {
+
+		public TextView meal;
+		public TextView time;
+		public TextView textId;
+		public TextView menu;
+
+	}
+	
 	@Override
-	public View getView(int position, View view, ViewGroup parent) {
+	public View getView(int position, View convertView, ViewGroup parent) {
 
-		DietChart mprofile;
-		mprofile = dietProfile.get(position); // why it is used??
-
+		/***** Get each Model object from Array list ********/
+		todayChart = dietChart.get(position);
+		ViewHolder holder = null;
+		
 		LayoutInflater inflater = context.getLayoutInflater();
+		
+		if (convertView == null) {
 
-		View rowView = inflater.inflate(R.layout.todayrow, null, true);
+			convertView = inflater.inflate(R.layout.todayrow, null);
+			holder = new ViewHolder();
+			holder.meal = (TextView) convertView.findViewById(R.id.meal);
+			holder.time = (TextView) convertView.findViewById(R.id.time);
+			holder.menu = (TextView) convertView.findViewById(R.id.menu);
+			holder.textId = (TextView) convertView.findViewById(R.id.dbID);
+		
+		/************ Set holder with LayoutInflater ************/
+		convertView.setTag(holder);
+	} else
+		
+		holder = (ViewHolder) convertView.getTag();
+		
+		holder.textId.setText(todayChart.getID().toString()); 
+		holder.time.setText(todayChart.getTime().toString());
+		holder.meal.setText(todayChart.getEventName().toString());
+		holder.menu.setText(todayChart.getMenu().toString());
 
-		TextView meal = (TextView) rowView.findViewById(R.id.meal);
-		TextView time = (TextView) rowView.findViewById(R.id.time);
-		TextView menu = (TextView) rowView.findViewById(R.id.menu);
-
-		TextView textId = (TextView) rowView.findViewById(R.id.dbID);
-		textId.setText(mprofile.getID().toString()); // in order to use for
-														// delete and edit in
-														// DataBase
-
-		time.setText(mprofile.getTime().toString());
-		meal.setText(mprofile.getEventName().toString());
-		menu.setText(mprofile.getMenu().toString());
-
-		return rowView;
+		return convertView;
 	}
 }

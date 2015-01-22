@@ -1,7 +1,7 @@
 package com.ftfl.icareapp.util;
 
 public class DietChart {
-	
+
 	// ------------------ Variables ------------------- //
 
 	private String mEventName;
@@ -14,7 +14,7 @@ public class DietChart {
 	// (ID in last Parameter)
 	public DietChart(String mEventName, String mDate, String mMenu,
 			String mTime, Integer mID) {
-		
+
 		this.mEventName = mEventName;
 		this.mDate = mDate;
 		this.mMenu = mMenu;

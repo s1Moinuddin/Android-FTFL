@@ -531,6 +531,7 @@ int string menu 0x7f0a0024
 int string mname 0x7f0a0018
 int string name 0x7f0a0016
 int string no 0x7f0a0035
+int string option 0x7f0a003a
 int string pickDate 0x7f0a0031
 int string pickMonth 0x7f0a0032
 int string profile 0x7f0a0013
@@ -547,6 +548,7 @@ int string tittleViewAll 0x7f0a002d
 int string upcomingDiet 0x7f0a002a
 int string update 0x7f0a001f
 int string vall 0x7f0a0039
+int string view_diet 0x7f0a003b
 int string vprofile 0x7f0a0038
 int string weight 0x7f0a001a
 int string yes 0x7f0a0034
