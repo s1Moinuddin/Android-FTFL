@@ -1,0 +1,10 @@
+So much Thankful to  
+
+http://www.androidhive.info/2013/09/android-fullscreen-image-slider-with-swipe-and-pinch-zoom-gestures/
+
+made some minor changes to increase the quality. 
+ memory out of bound problem solved for old devices. 
+
+will run on devices 11 and onwards.
+
+Thank you. 
